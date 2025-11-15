@@ -1,0 +1,39 @@
+<section class="menu-hero section-padding">
+  <div class="container">
+    <h1 class="page-title fade-in-up">Our Menu</h1>
+    <p class="page-subtitle fade-in-up">Discover Our Delicious Selection</p>
+  </div>
+</section>
+
+<section class="menu-section section-padding">
+  <div class="container">
+    <div class="menu-categories" *ngFor="let category of categories">
+      <div class="category-header fade-in-up">
+        <h2>{{ category.name }}</h2>
+        <div class="category-divider"></div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item fade-in-up" *ngFor="let item of category.items">
+          <div class="item-content">
+            <div class="item-header">
+              <h3>{{ item.name }}</h3>
+              <span class="item-price">{{ item.price }}</span>
+            </div>
+            <p class="item-description">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-cta section-padding">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Visit Us Today</h2>
+      <p>Experience our menu in person and enjoy the warm, welcoming atmosphere of Coffee Ceylon</p>
+      <a routerLink="/contact" class="btn btn-primary">Find Us</a>
+    </div>
+  </div>
+</section>
+

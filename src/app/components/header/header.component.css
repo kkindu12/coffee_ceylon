@@ -47,8 +47,14 @@
   display: inline-block;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
   color: #d4a574;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .mobile-menu-btn {

@@ -1,0 +1,48 @@
+<section class="about-hero section-padding">
+  <div class="container">
+    <h1 class="page-title fade-in-up">About Coffee Ceylon</h1>
+    <p class="page-subtitle fade-in-up">Discover Our Rich Heritage</p>
+  </div>
+</section>
+
+<section class="story-section section-padding">
+  <div class="container">
+    <div class="story-content">
+      <div class="story-text fade-in-up">
+        <h2>{{ story.title }}</h2>
+        <p class="founded">Founded in {{ story.founded }}</p>
+        <p>{{ story.description1 }}</p>
+        <p>{{ story.description2 }}</p>
+        <p>{{ story.description3 }}</p>
+      </div>
+      <div class="story-image fade-in">
+        <div class="image-placeholder">
+          <span class="coffee-icon">☕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values-section section-padding">
+  <div class="container">
+    <h2 class="section-title">Our Values</h2>
+    <div class="values-grid">
+      <div class="value-card" *ngFor="let value of values">
+        <div class="value-icon">{{ value.icon }}</div>
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mission-section section-padding">
+  <div class="container">
+    <div class="mission-content">
+      <h2>Our Mission</h2>
+      <p>To bring the world's finest Ceylon coffee to every cup, while supporting sustainable farming practices and building a community of coffee enthusiasts who appreciate quality, tradition, and excellence.</p>
+    </div>
+  </div>
+</section>
+

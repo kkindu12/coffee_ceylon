@@ -1,0 +1,38 @@
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title fade-in-up">Welcome to Coffee Ceylon</h1>
+    <p class="hero-subtitle fade-in-up">Experience the Rich Heritage of Ceylon Coffee</p>
+    <div class="hero-buttons fade-in-up">
+      <a routerLink="/menu" class="btn btn-primary">View Menu</a>
+      <a routerLink="/booking" class="btn btn-secondary">Book a Table</a>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+</section>
+
+<section class="features-preview section-padding">
+  <div class="container">
+    <h2 class="section-title">Why Choose Coffee Ceylon?</h2>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section-padding">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Experience Premium Coffee?</h2>
+      <p>Visit us today or browse our menu online</p>
+      <div class="cta-buttons">
+        <a routerLink="/menu" class="btn btn-primary">View Menu</a>
+        <a routerLink="/booking" class="btn btn-outline">Book a Table</a>
+      </div>
+    </div>
+  </div>
+</section>
+

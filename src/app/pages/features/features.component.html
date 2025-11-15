@@ -1,0 +1,46 @@
+<section class="features-hero section-padding">
+  <div class="container">
+    <h1 class="page-title fade-in-up">Our Features</h1>
+    <p class="page-subtitle fade-in-up">What Makes Coffee Ceylon Special</p>
+  </div>
+</section>
+
+<section class="features-section section-padding">
+  <div class="container">
+    <h2 class="section-title">Premium Features</h2>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features; let i = index" [style.animation-delay]="(i * 0.1) + 's'">
+        <div class="feature-icon-wrapper" [style.background-color]="feature.color + '20'">
+          <span class="feature-icon">{{ feature.icon }}</span>
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities-section section-padding">
+  <div class="container">
+    <h2 class="section-title">Amenities</h2>
+    <div class="amenities-grid">
+      <div class="amenity-card" *ngFor="let amenity of amenities">
+        <div class="amenity-icon">{{ amenity.icon }}</div>
+        <h3>{{ amenity.title }}</h3>
+        <p>{{ amenity.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience-section section-padding">
+  <div class="container">
+    <div class="experience-content">
+      <h2>Experience the Difference</h2>
+      <p>At Coffee Ceylon, we believe that great coffee is more than just a beverage—it's an experience. From the moment you walk through our doors, you'll notice the attention to detail, the warm atmosphere, and the commitment to excellence in every aspect of our service.</p>
+      <p>Whether you're a coffee connoisseur or just starting your journey, we invite you to discover what makes Coffee Ceylon special.</p>
+      <a routerLink="/menu" class="btn btn-primary">Explore Our Menu</a>
+    </div>
+  </div>
+</section>
+

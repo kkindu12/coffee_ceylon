@@ -1,0 +1,112 @@
+<section class="contact-hero section-padding">
+  <div class="container">
+    <h1 class="page-title fade-in-up">Contact Us</h1>
+    <p class="page-subtitle fade-in-up">We'd Love to Hear From You</p>
+  </div>
+</section>
+
+<section class="contact-section section-padding">
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-form-wrapper fade-in-up">
+        <h2>Send Us a Message</h2>
+        <form (ngSubmit)="onSubmit()" #contactFormRef="ngForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="contactForm.name" 
+              required
+              placeholder="Your name">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="contactForm.email" 
+              required
+              placeholder="your.email@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              [(ngModel)]="contactForm.phone"
+              placeholder="+94 XX XXX XXXX">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              [(ngModel)]="contactForm.message" 
+              required
+              rows="5"
+              placeholder="Your message..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" [disabled]="submitted">
+            {{ submitted ? 'Sending...' : 'Send Message' }}
+          </button>
+        </form>
+      </div>
+      
+      <div class="contact-info-wrapper fade-in-up">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h3>Address</h3>
+              <p>{{ contactInfo.address }}</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <h3>Phone</h3>
+              <p><a href="tel:{{ contactInfo.phone }}">{{ contactInfo.phone }}</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div class="info-content">
+              <h3>Email</h3>
+              <p><a href="mailto:{{ contactInfo.email }}">{{ contactInfo.email }}</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">🕒</div>
+            <div class="info-content">
+              <h3>Hours</h3>
+              <p>{{ contactInfo.hours.weekdays }}</p>
+              <p>{{ contactInfo.hours.weekend }}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="map-placeholder">
+          <div class="map-content">
+            <span class="map-icon">🗺️</span>
+            <p>Map Location</p>
+            <small>123 Coffee Street, Colombo</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

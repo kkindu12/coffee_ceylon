@@ -1,0 +1,189 @@
+<section class="booking-hero section-padding">
+  <div class="container">
+    <h1 class="page-title fade-in-up">Make a Reservation</h1>
+    <p class="page-subtitle fade-in-up">Reserve Your Table at Coffee Ceylon</p>
+  </div>
+</section>
+
+<section class="booking-section section-padding">
+  <div class="container">
+    <div class="booking-content">
+      <div class="booking-form-wrapper fade-in-up">
+        <h2>Book Your Table</h2>
+        <p class="form-intro">Fill out the form below to reserve your table. We'll confirm your booking via email.</p>
+        
+        <div class="alert alert-success" *ngIf="successMessage">
+          {{ successMessage }}
+        </div>
+        
+        <div class="alert alert-error" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+        
+        <form (ngSubmit)="onSubmit()" #bookingFormRef="ngForm" class="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                [(ngModel)]="bookingForm.name" 
+                required
+                placeholder="Your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                [(ngModel)]="bookingForm.email" 
+                required
+                placeholder="your.email@example.com">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                [(ngModel)]="bookingForm.phone" 
+                required
+                placeholder="+94 XX XXX XXXX">
+            </div>
+            
+            <div class="form-group">
+              <label for="guests">Number of Guests *</label>
+              <select 
+                id="guests" 
+                name="guests" 
+                [(ngModel)]="bookingForm.guests" 
+                required>
+                <option *ngFor="let num of getGuestOptions()" [value]="num">
+                  {{ num }} {{ num === 1 ? 'Guest' : 'Guests' }}
+                </option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Date *</label>
+              <input 
+                type="date" 
+                id="date" 
+                name="date" 
+                [(ngModel)]="bookingForm.date" 
+                (ngModelChange)="onDateChange()"
+                [min]="getMinDate()"
+                [max]="getMaxDate()"
+                required>
+            </div>
+            
+            <div class="form-group">
+              <label for="time">Time *</label>
+              <select 
+                id="time" 
+                name="time" 
+                [(ngModel)]="bookingForm.time" 
+                required>
+                <option value="">Select a time</option>
+                <option *ngFor="let time of availableTimes" [value]="time">
+                  {{ time }}
+                </option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="occasion">Occasion</label>
+            <select 
+              id="occasion" 
+              name="occasion" 
+              [(ngModel)]="bookingForm.occasion">
+              <option value="">Select an occasion (optional)</option>
+              <option *ngFor="let occasion of occasions" [value]="occasion">
+                {{ occasion }}
+              </option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="specialRequests">Special Requests</label>
+            <textarea 
+              id="specialRequests" 
+              name="specialRequests" 
+              [(ngModel)]="bookingForm.specialRequests"
+              rows="4"
+              placeholder="Any dietary requirements, accessibility needs, or special requests..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" [disabled]="submitted || loading">
+            {{ loading ? 'Processing...' : submitted ? 'Processing...' : 'Book Table' }}
+          </button>
+        </form>
+      </div>
+      
+      <div class="booking-info-wrapper fade-in-up">
+        <div class="booking-info">
+          <h2>Reservation Details</h2>
+          
+          <div class="info-card">
+            <div class="info-icon">🕒</div>
+            <div class="info-content">
+              <h3>Operating Hours</h3>
+              <p><strong>Monday - Friday:</strong><br>7:00 AM - 8:00 PM</p>
+              <p><strong>Saturday - Sunday:</strong><br>8:00 AM - 9:00 PM</p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">👥</div>
+            <div class="info-content">
+              <h3>Group Bookings</h3>
+              <p>For groups larger than 10 people, please contact us directly at <a href="tel:+94112345678">+94 11 234 5678</a> or <a href="mailto:info@coffeeceylon.com">info@coffeeceylon.com</a></p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">⏰</div>
+            <div class="info-content">
+              <h3>Booking Policy</h3>
+              <p>• Reservations can be made up to 3 months in advance</p>
+              <p>• Please arrive on time - tables are held for 15 minutes</p>
+              <p>• Cancellations should be made at least 24 hours in advance</p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h3>Location</h3>
+              <p>123 Coffee Street<br>Colombo, Sri Lanka</p>
+              <a routerLink="/contact" class="link">View on Map →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking-cta section-padding">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Questions About Your Reservation?</h2>
+      <p>Our team is here to help. Contact us for any special arrangements or inquiries.</p>
+      <div class="cta-buttons">
+        <a routerLink="/contact" class="btn btn-primary">Contact Us</a>
+        <a href="tel:+94112345678" class="btn btn-outline">Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
